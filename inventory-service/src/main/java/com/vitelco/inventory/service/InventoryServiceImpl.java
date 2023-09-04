@@ -53,7 +53,7 @@ public class InventoryServiceImpl implements InventoryService {
     public List<InventoryResponse> getStockInventoryStatus(List<String> skuCodes) {
         List<Inventory> lst = inventoryRepository.findInventoriesBySkuIn(skuCodes);
 
-        List<InventoryResponse> lst2 = lst.stream()
+        return lst.stream()
                 .map(inventory -> InventoryResponse.builder()
                         .id(inventory.getId())
                         .sku(inventory.getSku())
@@ -63,7 +63,6 @@ public class InventoryServiceImpl implements InventoryService {
                         .build())
                 .toList();
 
-        return lst2;
     }
 
     /**

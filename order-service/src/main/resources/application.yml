@@ -4,7 +4,7 @@ spring:
   datasource:
     password: postgres
     username: postgres
-    url: jdbc:postgresql://localhost:5431/postgres
+    url: jdbc:postgresql://localhost:5431/orderDB
     type: org.postgresql.ds.PGPoolingDataSource
     hikari:
       connection-timeout: 20000

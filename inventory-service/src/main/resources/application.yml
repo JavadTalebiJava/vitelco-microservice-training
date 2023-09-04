@@ -4,7 +4,7 @@ spring:
   datasource:
     password: postgres
     username: postgres
-    url: jdbc:postgresql://localhost:5432/inventory-service
+    url: jdbc:postgresql://localhost:5432/inventoryDB
     type: org.postgresql.ds.PGPoolingDataSource
     hikari:
       connection-timeout: 20000

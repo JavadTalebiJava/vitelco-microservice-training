@@ -7,3 +7,5 @@
 /order-service.iml
 /product-service.iml
 /inventory-service/inventory-service.iml
+
+/service-discovery/.mvn/
