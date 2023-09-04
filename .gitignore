@@ -1,0 +1,9 @@
+/.idea/
+
+**/target
+
+/inventory-service.iml
+/microservices-parent.iml
+/order-service.iml
+/product-service.iml
+/inventory-service/inventory-service.iml
