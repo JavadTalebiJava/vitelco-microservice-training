@@ -9,3 +9,8 @@
 /inventory-service/inventory-service.iml
 
 /service-discovery/.mvn/
+/infra/mongo-data/
+/infra/mysql_keycloak_data/
+/infra/postgres-inventory/
+/infra/postgres-order/
+/infra/realms/
