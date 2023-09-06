@@ -17,3 +17,11 @@ spring:
       ddl-auto: create-drop
 server:
   port: 4002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    enabled: true
+    fetch-registry: true
+    register-with-eureka: true

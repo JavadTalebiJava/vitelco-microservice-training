@@ -10,6 +10,7 @@ import com.vitelco.order.model.dto.response.OrderResponse;
 import com.vitelco.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -49,13 +50,14 @@ public class OrderServiceImpl implements OrderService{
     }
 
     private boolean checkStockInventoryStatusAvailability(List<String> skuCodes) throws URISyntaxException {
-        URI inventoryUri = new URI("http://localhost:4002/v1/inventory/check");
+        URI inventoryUri = new URI("http://INVENTORY-SERVICE/v1/inventory/check");
         HttpHeaders header =new HttpHeaders();
         header.setContentType(MediaType.APPLICATION_JSON);
 
         InventoryRequest inventoryRequest = InventoryRequest.builder().skuCodes(skuCodes).build();
 
         HttpEntity<InventoryRequest> httpEntity = new HttpEntity<>(inventoryRequest,header);
+
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<InventoryResponse>> responseEntity =  restTemplate.exchange(
                 inventoryUri,

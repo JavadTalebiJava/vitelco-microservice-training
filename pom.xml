@@ -16,6 +16,7 @@
 
     <modules>
         <module>service-discovery</module>
+        <module>gateway-service</module>
         <module>order-service</module>
         <module>inventory-service</module>
         <module>product-service</module>
