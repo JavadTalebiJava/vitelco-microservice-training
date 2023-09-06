@@ -8,8 +8,9 @@ import com.vitelco.order.model.dto.request.OrderRequest;
 import com.vitelco.order.model.dto.response.InventoryResponse;
 import com.vitelco.order.model.dto.response.OrderResponse;
 import com.vitelco.order.repository.OrderRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -22,11 +23,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository;
+
+    @Autowired
+    @LoadBalanced
+    private RestTemplate restTemplate;
+
+    public OrderServiceImpl(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
 
     /**
      * PlaceOrder
@@ -58,7 +67,6 @@ public class OrderServiceImpl implements OrderService{
 
         HttpEntity<InventoryRequest> httpEntity = new HttpEntity<>(inventoryRequest,header);
 
-        RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<InventoryResponse>> responseEntity =  restTemplate.exchange(
                 inventoryUri,
                 HttpMethod.POST,

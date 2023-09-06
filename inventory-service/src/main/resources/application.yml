@@ -16,9 +16,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
 server:
-  port: 4002
+  port: 0
 
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
