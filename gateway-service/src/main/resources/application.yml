@@ -3,6 +3,11 @@ spring:
     name: gateway
   main:
     web-application-type: reactive
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:5000/realms/spring-cloud-vitelco-realm
   cloud:
     gateway:
       routes:
